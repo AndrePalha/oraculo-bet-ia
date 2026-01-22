@@ -1,3 +1,7 @@
+import streamlit as st
+import google.generativeai as genai
+import time
+
 # --- CONFIGURAÇÃO VISUAL ---
 st.set_page_config(page_title="Oráculo Bet PRO", page_icon="🤑", layout="wide")
 
