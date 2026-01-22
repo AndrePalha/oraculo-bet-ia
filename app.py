@@ -4,7 +4,30 @@ import time
 
 # --- CONFIGURAÇÃO VISUAL ---
 st.set_page_config(page_title="Oráculo Bet PRO", page_icon="🤑", layout="wide")
+# --- SISTEMA DE LOGIN (O PORTEIRO) ---
+if "logado" not in st.session_state:
+    st.session_state["logado"] = False
 
+if not st.session_state["logado"]:
+    # Mostra apenas a tela de login
+    st.markdown("""
+    <style>
+        .stApp { background-color: #000000; }
+        div.stButton > button { width: 100%; background-color: #00ff7f; color: black; font-weight: bold;}
+    </style>
+    """, unsafe_allow_html=True)
+    
+    st.title("🔒 Área Restrita - Oráculo Bet")
+    senha = st.text_input("Digite sua Senha VIP:", type="password")
+    
+    if st.button("ACESSAR SISTEMA"):
+        if senha == "GREEN123":  # A SENHA ESTÁ AQUI
+            st.session_state["logado"] = True
+            st.rerun()  # Recarrega a página para entrar
+        else:
+            st.error("Senha incorreta! Tente novamente.")
+            
+    st.stop()  # PARA TUDO AQUI se não estiver logado
 # --- CSS ESTILO "CASSINO/TRADER" ---
 st.markdown("""
 <style>
